@@ -1,7 +1,7 @@
-import {Request, Response} from "express";
+import { Request, Response } from 'express';
 
-import {CustomError} from "@/utils/CustomError";
-import logger from "@/utils/logger";
+import { CustomError } from '@/utils/CustomError';
+import logger from '@/utils/logger';
 
 export class ResponseHandler {
     public static createResponseObject(
@@ -16,7 +16,7 @@ export class ResponseHandler {
             code,
             errorData: errorData || null,
         };
-    };
+    }
 
     public static sendResponse(
         res: Response,
@@ -26,8 +26,7 @@ export class ResponseHandler {
         message: string,
     ) {
         if (data instanceof CustomError) {
-            if (data.isLogging)
-                logger.error(`Path: ${req.originalUrl}; \n Error: ${data.message}`);
+            if (data.isLogging) logger.error(`Path: ${req.originalUrl}; \n Error: ${data.message}`);
 
             const errorResponse = this.createResponseObject(
                 null,
@@ -42,5 +41,5 @@ export class ResponseHandler {
 
         res.status(successResponse.code).send(successResponse);
         logger.info(`Path: ${req.originalUrl}; \n Success: Data sent successfully`);
-    };
+    }
 }

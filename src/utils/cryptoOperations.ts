@@ -1,11 +1,10 @@
-import {CustomError} from "@/utils/CustomError";
-import logger from "@/utils/logger";
-import {EnvConfig} from "@/config/env";
-import bcrypt from 'bcrypt'
+import { CustomError } from '@/utils/CustomError';
+import logger from '@/utils/logger';
+import { EnvConfig } from '@/config/env';
+import bcrypt from 'bcrypt';
 
 export class CryptoOperations {
-
-    private static env: EnvConfig = EnvConfig.getInstance()
+    private static env: EnvConfig = EnvConfig.getInstance();
 
     static hashPassword(password: string) {
         try {
@@ -18,7 +17,7 @@ export class CryptoOperations {
             logger.error(`CRYPTO OPERATIONS: Failed to hash password; \n ${error}`);
             return new CustomError('Internal Server Error', 500, true);
         }
-    };
+    }
 
     static comparePasswords(inputPassword: string, password: string) {
         try {
@@ -36,6 +35,5 @@ export class CryptoOperations {
             logger.error(`CRYPTO OPERATIONS: Failed to compare passwords; \n ${error}`);
             return new CustomError('Internal Server Error', 500, true);
         }
-    };
-
+    }
 }
