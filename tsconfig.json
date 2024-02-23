@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "lib": [
+      "es6"
+    ],
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "outDir": "build",
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  }
+}
