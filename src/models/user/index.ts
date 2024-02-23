@@ -1,16 +1,18 @@
-import mongoose, {Document, Schema, InferSchemaType} from 'mongoose';
-import {IUser} from "@/models/user/user.types";
+import mongoose, { Document, Schema, InferSchemaType } from 'mongoose';
+import { IUser } from '@/models/user/user.types';
 
 const UserSchema = new Schema<IUser>({
     username: {
         type: String,
-        required: true
+        required: true,
     },
     password: {
-        type: String, required: true},
-    wins: {type: Number, required: true},
-    draws: {type: Number, required: true},
-    losses: {type: Number, required: true},
+        type: String,
+        required: true,
+    },
+    wins: { type: Number, required: true },
+    draws: { type: Number, required: true },
+    losses: { type: Number, required: true },
 });
 
 export type IUserModel = InferSchemaType<typeof UserSchema>;

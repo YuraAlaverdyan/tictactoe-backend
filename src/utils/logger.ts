@@ -7,7 +7,7 @@ const color: { [key: string]: string } = {
     debug: '\x1b[35m',
 };
 
-const customPrintFormat = winston.format.printf(({level, message}) => {
+const customPrintFormat = winston.format.printf(({ level, message }) => {
     return `${level}: ${color[level] || ''} ${message}\x1b[0m `;
 });
 
@@ -15,7 +15,7 @@ const logger = winston.createLogger({
     transports: [
         new winston.transports.Console({
             level: 'debug',
-        })
+        }),
     ],
     format: winston.format.combine(
         winston.format.prettyPrint(),

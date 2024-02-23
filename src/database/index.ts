@@ -1,5 +1,5 @@
-import mongoose, {ConnectOptions} from 'mongoose';
-import logger from "@/utils/logger";
+import mongoose, { ConnectOptions } from 'mongoose';
+import logger from '@/utils/logger';
 
 export class MongoDBService {
     private readonly uri: string;
@@ -12,7 +12,7 @@ export class MongoDBService {
 
     public async connect(): Promise<void> {
         try {
-            logger.debug('Connecting to MongoDB...')
+            logger.debug('Connecting to MongoDB...');
             await mongoose.connect(this.uri, this.options);
         } catch (error) {
             logger.error('Error connecting to MongoDB:', error);
