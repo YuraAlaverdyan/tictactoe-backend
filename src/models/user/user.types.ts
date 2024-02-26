@@ -1,4 +1,6 @@
 import { Document } from 'mongoose';
+import { IUserModel } from '@/models/user/index';
+import { Socket } from 'socket.io';
 
 export interface IUser extends Document {
     username: string;
@@ -7,4 +9,9 @@ export interface IUser extends Document {
     wins: number;
     draws: number;
     losses: number;
+}
+
+export interface IUserSocket {
+    user: IUserModel;
+    socket: Socket;
 }

@@ -7,4 +7,10 @@ export class ValidationSchema {
             password: Joi.string().required(),
         });
     }
+
+    public static invitePlayer() {
+        return Joi.object().options({ abortEarly: false }).keys({
+            userId: Joi.string().required(),
+        });
+    }
 }
