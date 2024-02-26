@@ -20,4 +20,25 @@ export class JwtOperations {
             return new CustomError(`Internal Server Error`, 500, true);
         }
     }
+
+    public static verifyToken(token: string) {
+        try {
+            logger.debug(`JWT: Starting to verify token...`);
+            const decoded = jwt.verify(token, this.env.get('JWT_SECRET'));
+
+            if (typeof decoded === 'string') return null;
+
+            if (decoded.exp && Date.now() >= decoded.exp * 1000) {
+                logger.error('JWT: Token expired!');
+                return null;
+            }
+
+            logger.info(`JWT: Token verified successfully`);
+
+            return decoded;
+        } catch (error) {
+            logger.error(`JWT: Error verifying token; \n ${error}`);
+            return null;
+        }
+    }
 }
